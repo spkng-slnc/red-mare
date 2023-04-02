@@ -1,12 +1,13 @@
-import { FC, PropsWithChildren } from "react";
+import { FC } from "react";
 import { SiteHeader } from "./components/SiteHeader/SiteHeader";
 import { ThemeProvider } from "./components/ThemeProvider/ThemeProvider";
+import { Outlet } from "react-router-dom";
 
-export const App: FC<PropsWithChildren> = ({ children }) => {
+export const App: FC = () => {
   return (
     <ThemeProvider>
       <SiteHeader />
-      {children}
+      <Outlet />
     </ThemeProvider>
   );
 };

@@ -3,6 +3,7 @@ import Link from "@mui/material/Link";
 import { Link as RouterLink } from "react-router-dom";
 import { FC } from "react";
 import { featureDictionary } from "../../resources/featureDictionary";
+import logo from "../../assets/logo.png";
 
 export const SiteHeader: FC = () => {
   const { palette, spacing } = useTheme();
@@ -32,11 +33,12 @@ export const SiteHeader: FC = () => {
               textDecoration: "none",
             }}
           >
-            RM
+            <img src={logo} style={{ height: "60px", width: "60px" }} />
           </Link>
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
-            {Object.entries(featureDictionary).map(([page, path]) => (
+            {Object.entries(featureDictionary).map(([title, path]) => (
               <Link
+                key={path}
                 component={RouterLink}
                 to={path}
                 sx={{
@@ -48,7 +50,7 @@ export const SiteHeader: FC = () => {
                   textTransform: "uppercase",
                 }}
               >
-                {page}
+                {title}
               </Link>
             ))}
           </Box>
