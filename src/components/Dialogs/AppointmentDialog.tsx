@@ -16,7 +16,14 @@ export const AppointmentDialog: FC<AppointmentDialogProps> = ({
   const { height } = useWindowSize();
 
   return (
-    <Dialog open={open} fullWidth maxWidth="lg" scroll="body" onClose={onClose}>
+    <Dialog
+      open={open}
+      fullWidth
+      maxWidth="lg"
+      scroll="body"
+      onClose={onClose}
+      keepMounted
+    >
       <Box display="flex" justifyContent="flex-end" m={2}>
         <IconButton onClick={onClose}>
           <Close />

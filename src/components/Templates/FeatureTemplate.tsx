@@ -1,4 +1,5 @@
 import { Box, Container, Typography } from "@mui/material";
+import { animated, useTrail } from "@react-spring/web";
 import { FC } from "react";
 
 interface FeatureTemplateProps {
@@ -8,34 +9,52 @@ interface FeatureTemplateProps {
   subtitle?: string;
 }
 
+const AnimatedTypography = animated(Typography);
+
 export const FeatureTemplate: FC<FeatureTemplateProps> = ({
   copy,
   interaction,
   title,
   subtitle,
 }) => {
+  const items = [title, subtitle, ...copy].filter((item) =>
+    Boolean(item)
+  ).length;
+  console.log(items);
+  const trail = useTrail(items, {
+    config: { mass: 5, tension: 2000, friction: 300 },
+    opacity: 1,
+    x: 0,
+    from: { opacity: 0, x: 50 },
+  });
+
   return (
     <Container>
-      <Typography
+      <AnimatedTypography
         variant="h1"
         my={12}
         textAlign="end"
-        color={(theme) => theme.palette.secondary.main}
+        style={{ ...trail[0] }}
       >
         {title}
-      </Typography>
+      </AnimatedTypography>
       {Boolean(subtitle) && (
-        <Typography
+        <AnimatedTypography
           variant="h3"
           my={2}
           textAlign="end"
-          color={(theme) => theme.palette.secondary.main}
+          style={{ ...trail[1] }}
         >
           {subtitle}
-        </Typography>
+        </AnimatedTypography>
       )}
-      {copy.map((paragraph) => (
-        <Typography my={2}>{paragraph}</Typography>
+      {copy.map((paragraph, i) => (
+        <AnimatedTypography
+          my={2}
+          style={{ ...trail[items - copy.length + i] }}
+        >
+          {paragraph}
+        </AnimatedTypography>
       ))}
       {Boolean(interaction) && <>{interaction}</>}
     </Container>

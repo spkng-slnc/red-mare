@@ -23,4 +23,16 @@ export const themeOptions: ThemeOptions = {
     },
   },
   shadows: Array(25).fill("none") as Shadows,
+  typography: {
+    h1: {
+      color: "#B1492F",
+    },
+  },
+  components: {
+    MuiButton: {
+      styleOverrides: {
+        textPrimary: ({ theme }) => theme.palette.info.main,
+      },
+    },
+  },
 };

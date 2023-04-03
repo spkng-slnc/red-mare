@@ -3,20 +3,13 @@ import Link from "@mui/material/Link";
 import { Link as RouterLink } from "react-router-dom";
 import { FC } from "react";
 import { featureDictionary } from "../../resources/featureDictionary";
-import logo from "../../assets/logo.png";
+import { RedMare } from "../RedMare";
 
 export const SiteHeader: FC = () => {
   const { palette, spacing } = useTheme();
 
   return (
-    <AppBar
-      sx={{
-        backgroundColor: "white",
-        color: palette.primary.main,
-        borderBottom: `1px solid ${palette.primary.main}`,
-      }}
-      position="sticky"
-    >
+    <AppBar color="transparent" position="sticky">
       <Container
         disableGutters
         maxWidth={false}
@@ -33,9 +26,9 @@ export const SiteHeader: FC = () => {
               textDecoration: "none",
             }}
           >
-            <img src={logo} style={{ height: "60px", width: "60px" }} />
+            <RedMare height="60px" width="60px" fill={palette.secondary.main} />
           </Link>
-          <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
+          <Box sx={{ flexGrow: 1, display: "flex" }}>
             {Object.entries(featureDictionary).map(([title, path]) => (
               <Link
                 key={path}
