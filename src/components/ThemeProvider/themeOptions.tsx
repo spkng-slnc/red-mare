@@ -55,5 +55,18 @@ export const themeOptions: ThemeOptions = {
         textPrimary: ({ theme }) => theme.palette.info.main,
       },
     },
+    MuiTextField: {
+      defaultProps: {
+        variant: "standard",
+        color: "secondary",
+      },
+    },
+    MuiInputLabel: {
+      styleOverrides: {
+        root: {
+          color: "#2E3B44",
+        },
+      },
+    },
   },
 };

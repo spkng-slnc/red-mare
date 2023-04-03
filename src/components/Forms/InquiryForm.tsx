@@ -36,16 +36,27 @@ export const InquiryForm = () => {
       onSubmit={handleSubmit((data) => console.log(data))}
     >
       <FormRow>
-        <FormTextInput label="First Name" {...register("firstName")} />
+        <FormTextInput required label="First Name" {...register("firstName")} />
         <FormTextInput label="Last Name" {...register("lastName")} />
       </FormRow>
 
       <FormRow>
-        <FormTextInput required label="Email" {...register("email")} />
-        <FormTextInput label="Phone" {...register("phone")} />
+        <FormTextInput
+          required
+          type="email"
+          label="Email"
+          {...register("email")}
+        />
+        <FormTextInput
+          required
+          type="tel"
+          label="Phone"
+          {...register("phone")}
+        />
       </FormRow>
 
       <FormRow>
+        {/* TODO: Limit the number of characters to 500 */}
         <TextField
           required
           label="Message"

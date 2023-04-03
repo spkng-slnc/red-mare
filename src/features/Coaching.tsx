@@ -29,7 +29,7 @@ export const Coaching = () => {
               color="primary"
               onClick={handleOpenDialog}
             >
-              Inquire about coaching
+              Inquire
             </Button>
           </Box>
           <InquiryDialog open={openDialog} onClose={handleCloseDialog} />
