@@ -4,10 +4,11 @@ import {
   Route,
   RouterProvider as ReactRouterProvider,
 } from "react-router-dom";
-import { App } from "../../App";
+import { Layout } from "../../Layout";
 import {
   Appraisals,
   Coaching,
+  Home,
   NotFound,
   SalesAndLeasing,
   Training,
@@ -15,7 +16,8 @@ import {
 
 const router = createBrowserRouter(
   createRoutesFromElements(
-    <Route path="/" element={<App />}>
+    <Route element={<Layout />}>
+      <Route path="/" element={<Home />} />
       <Route path="/appraisals" element={<Appraisals />} />
       <Route path="/coaching" element={<Coaching />} />
       <Route path="/sales-and-leasing" element={<SalesAndLeasing />} />
@@ -26,9 +28,3 @@ const router = createBrowserRouter(
 );
 
 export const RouterProvider = () => <ReactRouterProvider router={router} />;
-
-// ReactDOM.createRoot(document.getElementById("root")).render(
-//   <React.StrictMode>
-//     <RouterProvider router={router} />
-//   </React.StrictMode>
-// );

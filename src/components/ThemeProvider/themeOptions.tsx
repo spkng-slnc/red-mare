@@ -27,6 +27,9 @@ export const themeOptions: ThemeOptions = {
     h1: {
       color: "#B1492F",
     },
+    h2: {
+      color: "#273E47",
+    },
   },
   components: {
     MuiButton: {

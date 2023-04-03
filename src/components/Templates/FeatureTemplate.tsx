@@ -20,12 +20,10 @@ export const FeatureTemplate: FC<FeatureTemplateProps> = ({
   const items = [title, subtitle, ...copy].filter((item) =>
     Boolean(item)
   ).length;
-  console.log(items);
   const trail = useTrail(items, {
     config: { mass: 5, tension: 2000, friction: 300 },
     opacity: 1,
-    x: 0,
-    from: { opacity: 0, x: 50 },
+    from: { opacity: 0 },
   });
 
   return (

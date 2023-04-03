@@ -3,7 +3,7 @@ import Link from "@mui/material/Link";
 import { Link as RouterLink } from "react-router-dom";
 import { FC } from "react";
 import { featureDictionary } from "../../resources/featureDictionary";
-import { RedMare } from "../RedMare";
+import { RedMare } from "../Svgs/RedMare";
 
 export const SiteHeader: FC = () => {
   const { palette, spacing } = useTheme();
