@@ -27,14 +27,35 @@ export const InquiryDialog: FC<InquiryDialogProps> = ({
       onClose={onClose}
       sx={{ height: `${height * 7}` }}
     >
-      <Box display="flex" justifyContent="flex-end" mx={2} mt={1}>
-        {Boolean(prompt) && <Typography>{prompt}</Typography>}
-        <IconButton onClick={onClose}>
-          <Close fill={palette.primary.light} />
+      <Box
+        display="flex"
+        justifyContent="space-between"
+        alignItems="center"
+        mx={4}
+        mt={4}
+      >
+        <Typography
+          variant="h5"
+          textTransform="uppercase"
+          fontWeight="400"
+          letterSpacing={2}
+          color={palette.primary.main}
+          ml={1}
+        >
+          Inquire
+        </Typography>
+        <IconButton onClick={onClose} color="primary">
+          <Close />
         </IconButton>
       </Box>
 
-      <Box padding={2}>
+      {Boolean(prompt) && (
+        <Box>
+          <Typography>{prompt}</Typography>
+        </Box>
+      )}
+
+      <Box padding={4}>
         <InquiryForm />
       </Box>
     </Dialog>

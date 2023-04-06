@@ -68,7 +68,7 @@ export const InquiryForm = () => {
         />
       </FormRow>
 
-      <FormRow mt={1}>
+      <FormRow mt={6}>
         <Button type="submit" variant="contained">
           Submit
         </Button>
