@@ -1,8 +1,9 @@
+import { useState } from "react";
 import { Button } from "@mui/material";
 import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/system/Box";
-import { useState } from "react";
+
 import { AppointmentDialog } from "../components/Dialogs/AppointmentDialog";
 import { FeatureTemplate } from "../components/Templates/FeatureTemplate";
 

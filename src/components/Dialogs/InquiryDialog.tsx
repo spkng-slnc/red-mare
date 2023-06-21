@@ -1,6 +1,7 @@
+import { FC } from "react";
 import { Close } from "@mui/icons-material";
 import { Box, Dialog, IconButton, Typography, useTheme } from "@mui/material";
-import { FC } from "react";
+
 import { useWindowSize } from "../../utils/useWindowSize";
 import { InquiryForm } from "../Forms/InquiryForm";
 

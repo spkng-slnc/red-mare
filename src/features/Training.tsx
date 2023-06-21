@@ -1,5 +1,6 @@
-import { Box, Button } from "@mui/material";
 import { useState } from "react";
+import { Box, Button } from "@mui/material";
+
 import { InquiryDialog } from "../components/Dialogs/InquiryDialog";
 import { FeatureTemplate } from "../components/Templates/FeatureTemplate";
 
@@ -27,8 +28,7 @@ export const Training = () => {
             <Button
               variant="contained"
               color="primary"
-              onClick={handleOpenDialog}
-            >
+              onClick={handleOpenDialog}>
               Inquire
             </Button>
           </Box>

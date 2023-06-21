@@ -1,8 +1,9 @@
 import { FC } from "react";
+import { Outlet } from "react-router-dom";
+
+import { ApolloProvider } from "./components/ApolloProvider/ApolloProvider";
 import { SiteHeader } from "./components/SiteHeader/SiteHeader";
 import { ThemeProvider } from "./components/ThemeProvider/ThemeProvider";
-import { Outlet } from "react-router-dom";
-import { ApolloProvider } from "./components/ApolloProvider/ApolloProvider";
 
 export const Layout: FC = () => {
   return (

@@ -4,7 +4,7 @@ import {
   Route,
   RouterProvider as ReactRouterProvider,
 } from "react-router-dom";
-import { Layout } from "../../Layout";
+
 import {
   AdminDashboard,
   AdminLogin,
@@ -15,6 +15,7 @@ import {
   SalesAndLeasing,
   Training,
 } from "../../features";
+import { Layout } from "../../Layout";
 
 const router = createBrowserRouter(
   createRoutesFromElements(

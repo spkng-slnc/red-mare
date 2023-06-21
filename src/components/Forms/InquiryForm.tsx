@@ -1,7 +1,7 @@
+import { forwardRef } from "react";
+import { Controller, useForm } from "react-hook-form";
 import styled from "@emotion/styled";
 import { Box, Button, TextField, TextFieldProps } from "@mui/material";
-import { forwardRef } from "react";
-import { useForm, Controller } from "react-hook-form";
 
 interface InquiryFormValues {
   firstName: string;

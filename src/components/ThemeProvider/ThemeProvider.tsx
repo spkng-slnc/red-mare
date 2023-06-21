@@ -3,6 +3,7 @@ import {
   createTheme,
   ThemeProvider as MuiThemeProvider,
 } from "@mui/material/styles";
+
 import { themeOptions } from "./themeOptions";
 
 const theme = createTheme(themeOptions);

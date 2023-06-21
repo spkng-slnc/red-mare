@@ -1,6 +1,6 @@
+import { FC } from "react";
 import { Box, Container, Typography } from "@mui/material";
 import { animated, useTrail } from "@react-spring/web";
-import { FC } from "react";
 
 interface FeatureTemplateProps {
   copy: string[];

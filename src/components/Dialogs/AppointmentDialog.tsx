@@ -1,7 +1,8 @@
-import { Button, Dialog, IconButton } from "@mui/material";
-import Box from "@mui/system/Box";
 import { FC } from "react";
 import { Close } from "@mui/icons-material";
+import { Button, Dialog, IconButton } from "@mui/material";
+import Box from "@mui/system/Box";
+
 import { useWindowSize } from "../../utils/useWindowSize";
 
 interface AppointmentDialogProps {

@@ -1,5 +1,6 @@
-import { Box, Button } from "@mui/material";
 import { useState } from "react";
+import { Box, Button } from "@mui/material";
+
 import { InquiryDialog } from "../components/Dialogs/InquiryDialog";
 import { FeatureTemplate } from "../components/Templates/FeatureTemplate";
 

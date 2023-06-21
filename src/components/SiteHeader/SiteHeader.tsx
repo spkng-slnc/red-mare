@@ -1,7 +1,8 @@
+import { FC } from "react";
+import { Link as RouterLink } from "react-router-dom";
 import { AppBar, Box, Container, Toolbar, useTheme } from "@mui/material";
 import Link from "@mui/material/Link";
-import { Link as RouterLink } from "react-router-dom";
-import { FC } from "react";
+
 import { featureDictionary } from "../../resources/featureDictionary";
 import { RedMare } from "../Svgs/RedMare";
 

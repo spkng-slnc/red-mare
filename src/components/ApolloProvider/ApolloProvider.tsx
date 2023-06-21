@@ -1,9 +1,9 @@
+import { PropsWithChildren } from "react";
 import {
   ApolloClient,
-  InMemoryCache,
   ApolloProvider as Provider,
+  InMemoryCache,
 } from "@apollo/client";
-import { PropsWithChildren } from "react";
 
 const client = new ApolloClient({
   uri: "localhost:3000",
