@@ -9,5 +9,7 @@ A public facing site for RedMare, Inc.
 - react-hook-form
 - mui
 - emotion
+- graphql
+- apollo client
 - prettier
 - eslint

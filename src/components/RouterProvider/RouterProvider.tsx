@@ -6,6 +6,8 @@ import {
 } from "react-router-dom";
 import { Layout } from "../../Layout";
 import {
+  AdminDashboard,
+  AdminLogin,
   Appraisals,
   Coaching,
   Home,
@@ -22,6 +24,9 @@ const router = createBrowserRouter(
       <Route path="/coaching" element={<Coaching />} />
       <Route path="/sales-and-leasing" element={<SalesAndLeasing />} />
       <Route path="/training" element={<Training />} />
+      <Route path="/admin" element={<AdminLogin />}>
+        <Route path="/dashboard" element={<AdminDashboard />} />
+      </Route>
       <Route path="/*" element={<NotFound />} />
     </Route>
   )
