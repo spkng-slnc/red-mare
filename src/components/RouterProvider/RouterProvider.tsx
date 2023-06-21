@@ -26,7 +26,7 @@ const router = createBrowserRouter(
       <Route path="/sales-and-leasing" element={<SalesAndLeasing />} />
       <Route path="/training" element={<Training />} />
       <Route path="/admin" element={<AdminLogin />}>
-        <Route path="/dashboard" element={<AdminDashboard />} />
+        <Route path="/admin/dashboard" element={<AdminDashboard />} />
       </Route>
       <Route path="/*" element={<NotFound />} />
     </Route>
