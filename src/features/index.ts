@@ -1,6 +1,7 @@
 export { AdminDashboard } from "./Admin/AdminDashboard";
 export { AdminLogin } from "./Admin/AdminLogin";
 export { Appraisals } from "./Appraisals";
+export { Biography } from "./Biography";
 export { Coaching } from "./Coaching";
 export { Home } from "./Home";
 export { NotFound } from "./NotFound";

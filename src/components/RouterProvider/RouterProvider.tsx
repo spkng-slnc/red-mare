@@ -9,6 +9,7 @@ import {
   AdminDashboard,
   AdminLogin,
   Appraisals,
+  Biography,
   Coaching,
   Home,
   NotFound,
@@ -21,6 +22,7 @@ const router = createBrowserRouter(
   createRoutesFromElements(
     <Route element={<Layout />}>
       <Route path="/" element={<Home />} />
+      <Route path="/about-us" element={<Biography />} />
       <Route path="/appraisals" element={<Appraisals />} />
       <Route path="/coaching" element={<Coaching />} />
       <Route path="/sales-and-leasing" element={<SalesAndLeasing />} />

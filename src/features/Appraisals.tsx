@@ -1,7 +1,5 @@
 import { useState } from "react";
 import { Button } from "@mui/material";
-import Container from "@mui/material/Container";
-import Typography from "@mui/material/Typography";
 import Box from "@mui/system/Box";
 
 import { AppointmentDialog } from "../components/Dialogs/AppointmentDialog";
@@ -32,8 +30,7 @@ export const Appraisals = () => {
             <Button
               variant="contained"
               color="primary"
-              onClick={handleOpenDialog}
-            >
+              onClick={handleOpenDialog}>
               Request an appointment
             </Button>
           </Box>
