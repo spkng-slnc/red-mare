@@ -1,28 +1,16 @@
-import { FC, ReactNode } from "react";
-import { Route } from "react-router-dom";
+import { FC, PropsWithChildren } from "react";
+import { Navigate, Route } from "react-router-dom";
 import { gql, useQuery } from "@apollo/client";
 
-import { Home } from "../../features";
-
-interface PrivateRouteProps {
-  path: string;
-  element: ReactNode;
-  authId: string;
-}
-
-export const PrivateRoute: FC<PrivateRouteProps> = ({
+export const PrivateRoute: FC<{ authId: string } & PropsWithChildren> = ({
   authId,
-  element,
-  path,
+  children,
 }) => {
   const { data, loading } = useQuery(USER_AUTH_QUERY);
 
   if (loading) return null;
 
-  if (data.user.auth.id !== authId)
-    return <Route path="/" element={<Home />} />;
-
-  return <Route path={path} element={element} />;
+  return data.user.auth.id === authId ? <>{children}</> : <Navigate to="/" />;
 };
 
 const USER_AUTH_QUERY = gql`

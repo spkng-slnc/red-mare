@@ -24,16 +24,32 @@ const router = createBrowserRouter(
   createRoutesFromElements(
     <Route element={<Layout />}>
       <Route path="/" element={<Home />} />
-      <Route path="/about-us" element={<Biography />} />
+      <Route path="/about-me" element={<Biography />} />
       <Route path="/appraisals" element={<Appraisals />} />
       <Route path="/coaching" element={<Coaching />} />
-      <Route path="/sales-and-leasing" element={<SalesAndLeasing />} />
+      <Route
+        path="/sales-and-leasing"
+        element={
+          <PrivateRoute authId={import.meta.env.DEV_ID}>
+            <SalesAndLeasing />
+          </PrivateRoute>
+        }
+      />
       <Route path="/training" element={<Training />} />
-      <Route path="/admin" element={<AdminLogin />}>
-        <PrivateRoute
-          path="/admin"
-          element={<AdminDashboard />}
-          authId={process.env.ADMIN_AUTH_ID!}
+      <Route
+        path="/admin"
+        element={
+          <PrivateRoute authId={import.meta.env.DEV_ID}>
+            <AdminLogin />
+          </PrivateRoute>
+        }>
+        <Route
+          path="/admin/dashboard"
+          element={
+            <PrivateRoute authId={import.meta.env.DEV_ID}>
+              <AdminDashboard />
+            </PrivateRoute>
+          }
         />
       </Route>
       <Route path="/*" element={<NotFound />} />

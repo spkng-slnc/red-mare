@@ -1,5 +1,6 @@
 import { FC } from "react";
 import { Link as RouterLink } from "react-router-dom";
+import { gql, useQuery } from "@apollo/client";
 import { AppBar, Box, Container, Toolbar, useTheme } from "@mui/material";
 import Link from "@mui/material/Link";
 
@@ -7,6 +8,7 @@ import { RedMare } from "../Svgs/RedMare";
 
 export const SiteHeader: FC = () => {
   const { palette } = useTheme();
+  const { data, loading } = useQuery(USER_AUTH_QUERY);
 
   return (
     <AppBar color="transparent" position="sticky">
@@ -34,9 +36,13 @@ export const SiteHeader: FC = () => {
             <StyledLink path="/" title="Home" />
             <StyledLink path="/appraisals" title="Appraisals" />
             <StyledLink path="/coaching" title="Coaching" />
-            <StyledLink path="/sales-and-leasing" title="Sales & Leasing" />
+            {import.meta.env.VITE_ADMIN_ID === data?.currentUser?.auth.id && (
+              <StyledLink path="/sales-and-leasing" title="Sales & Leasing" />
+            )}
             <StyledLink path="/training" title="Training" />
-            <StyledLink path="/about-me" title="About" />
+            {import.meta.env.VITE_ADMIN_ID === data?.currentUser?.auth.id && (
+              <StyledLink path="/about-me" title="About" />
+            )}
           </Box>
         </Toolbar>
       </Container>
@@ -64,3 +70,13 @@ const StyledLink: FC<{ path: string; title: string }> = ({ path, title }) => {
     </Link>
   );
 };
+
+const USER_AUTH_QUERY = gql`
+  query UserAuthQuery {
+    currentUser {
+      auth {
+        id
+      }
+    }
+  }
+`;
