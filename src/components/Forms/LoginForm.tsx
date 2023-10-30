@@ -1,5 +1,6 @@
+import { FC } from "react";
 import { useForm } from "react-hook-form";
-import { Button } from "@mui/material";
+import { BoxProps, Button } from "@mui/material";
 
 import { FormRow, FormTextInput, FormWrapper } from "./Atoms";
 
@@ -8,10 +9,15 @@ interface LoginFormValues {
   password: string;
 }
 
-export const LoginForm = () => {
+interface LoginFormProps {
+  maxWidth?: BoxProps["maxWidth"];
+  onSubmit: (data: LoginFormValues) => void;
+}
+
+export const LoginForm: FC<LoginFormProps> = ({ maxWidth, onSubmit }) => {
   const { register, handleSubmit } = useForm<LoginFormValues>();
   return (
-    <FormWrapper onSubmit={handleSubmit((data) => console.log(data))}>
+    <FormWrapper onSubmit={handleSubmit(onSubmit)} maxWidth={maxWidth}>
       <FormRow>
         <FormTextInput
           required

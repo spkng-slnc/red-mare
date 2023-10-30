@@ -36,13 +36,7 @@ const router = createBrowserRouter(
         }
       />
       <Route path="/training" element={<Training />} />
-      <Route
-        path="/admin"
-        element={
-          <PrivateRoute authId={import.meta.env.DEV_ID}>
-            <AdminLogin />
-          </PrivateRoute>
-        }>
+      <Route path="/admin" element={<AdminLogin />}>
         <Route
           path="/admin/dashboard"
           element={

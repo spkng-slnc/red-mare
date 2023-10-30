@@ -33,7 +33,6 @@ export const SiteHeader: FC = () => {
             <RedMare height="60px" width="60px" fill={palette.secondary.main} />
           </Link>
           <Box sx={{ display: "flex", flexGrow: 1 }}>
-            <StyledLink path="/" title="Home" />
             <StyledLink path="/appraisals" title="Appraisals" />
             <StyledLink path="/coaching" title="Coaching" />
             {import.meta.env.VITE_ADMIN_ID === data?.currentUser?.auth.id && (

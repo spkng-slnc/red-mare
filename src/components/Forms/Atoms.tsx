@@ -12,8 +12,8 @@ export const FormWrapper: FC<FormWrapperProps> = ({ children, ...rest }) => {
     <Box
       component="form"
       display="flex"
+      flex={1}
       flexDirection="column"
-      justifyContent="center"
       sx={{
         "& .MuiTextField-root": { m: 1 },
       }}
