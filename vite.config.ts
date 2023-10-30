@@ -5,7 +5,6 @@ import svgr from "vite-plugin-svgr";
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  envPrefix: "ENV__",
   plugins: [react(), svgr()],
   resolve: {
     alias: {

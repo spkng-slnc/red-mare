@@ -7,8 +7,8 @@ import Link from "@mui/material/Link";
 import { RedMare } from "../Svgs/RedMare";
 
 export const SiteHeader: FC = () => {
+  const { data } = useQuery(USER_AUTH_QUERY);
   const { palette } = useTheme();
-  const { data, loading } = useQuery(USER_AUTH_QUERY);
 
   return (
     <AppBar color="transparent" position="sticky">
