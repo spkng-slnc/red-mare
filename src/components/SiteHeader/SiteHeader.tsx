@@ -9,6 +9,8 @@ import { RedMare } from "../Svgs/RedMare";
 export const SiteHeader: FC = () => {
   const { data } = useQuery(USER_AUTH_QUERY);
   const { palette } = useTheme();
+  const authId = data?.currentUser?.auth.id;
+  const adminId = import.meta.env.VITE_ADMIN_ID;
 
   return (
     <AppBar color="transparent" position="sticky">
@@ -35,13 +37,11 @@ export const SiteHeader: FC = () => {
           <Box sx={{ display: "flex", flexGrow: 1 }}>
             <StyledLink path="/appraisals" title="Appraisals" />
             <StyledLink path="/coaching" title="Coaching" />
-            {import.meta.env.VITE_ADMIN_ID === data?.currentUser?.auth.id && (
+            {adminId && adminId === authId && (
               <StyledLink path="/sales-and-leasing" title="Sales & Leasing" />
             )}
             <StyledLink path="/training" title="Training" />
-            {import.meta.env.VITE_ADMIN_ID === data?.currentUser?.auth.id && (
-              <StyledLink path="/about-me" title="About" />
-            )}
+            <StyledLink path="/about-me" title="About" />
           </Box>
         </Toolbar>
       </Container>
