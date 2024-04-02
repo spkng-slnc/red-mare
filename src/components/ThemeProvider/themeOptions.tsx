@@ -20,6 +20,11 @@ export const themeOptions: (mode: ColorMode) => ThemeOptions = (mode) => ({
         },
       },
     },
+    MuiSvgIcon: {
+      defaultProps: {
+        color: "primary",
+      },
+    },
     MuiTextField: {
       defaultProps: {
         color: "secondary",

@@ -48,11 +48,7 @@ export const SiteHeader: FC = () => {
             <StyledLink path="/about-me" title="About" />
           </Box>
           <IconButton onClick={toggleColorMode}>
-            {colorMode === "light" ? (
-              <DarkMode color="primary" />
-            ) : (
-              <LightMode color="primary" />
-            )}
+            {colorMode === "light" ? <DarkMode /> : <LightMode />}
           </IconButton>
         </Toolbar>
       </Container>
