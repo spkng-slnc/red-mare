@@ -1,16 +1,26 @@
 import { FC } from "react";
 import { Link as RouterLink } from "react-router-dom";
 import { gql, useQuery } from "@apollo/client";
-import { AppBar, Box, Container, Toolbar, useTheme } from "@mui/material";
-import Link from "@mui/material/Link";
+import { DarkMode, LightMode } from "@mui/icons-material";
+import {
+  AppBar,
+  Box,
+  Container,
+  IconButton,
+  Link,
+  Toolbar,
+  useTheme,
+} from "@mui/material";
+import { useColorModeContext } from "src/contexts/ColorMode/ColorModeContext";
 
-import { RedMare } from "../Svgs/RedMare";
+import { RedMareLogo } from "./RedMareLogo";
 
 export const SiteHeader: FC = () => {
   const { data } = useQuery(USER_AUTH_QUERY);
-  const { palette } = useTheme();
+  const { colorMode, toggleColorMode } = useColorModeContext();
   const authId = data?.currentUser?.auth.id;
   const adminId = import.meta.env.VITE_ADMIN_ID;
+  const { palette } = useTheme();
 
   return (
     <AppBar color="transparent" position="sticky">
@@ -19,21 +29,15 @@ export const SiteHeader: FC = () => {
         maxWidth={false}
         sx={{
           display: "flex",
-          justifyContent: "space-between",
           width: "100%",
         }}>
-        <Toolbar>
-          <Link
-            component={RouterLink}
-            variant="h5"
-            to="/"
-            sx={{
-              fontWeight: 700,
-              letterSpacing: ".3rem",
-              textDecoration: "none",
-            }}>
-            <RedMare height="60px" width="60px" fill={palette.secondary.main} />
-          </Link>
+        <Toolbar
+          sx={{
+            display: "flex",
+            justifyContent: "space-between",
+            width: "100%",
+          }}>
+          <RedMareLogo />
           <Box sx={{ display: "flex", flexGrow: 1 }}>
             <StyledLink path="/appraisals" title="Appraisals" />
             <StyledLink path="/coaching" title="Coaching" />
@@ -43,6 +47,9 @@ export const SiteHeader: FC = () => {
             <StyledLink path="/training" title="Training" />
             <StyledLink path="/about-me" title="About" />
           </Box>
+          <IconButton onClick={toggleColorMode}>
+            {colorMode === "light" ? <DarkMode /> : <LightMode />}
+          </IconButton>
         </Toolbar>
       </Container>
     </AppBar>
