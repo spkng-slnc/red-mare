@@ -26,11 +26,8 @@ export const Appraisals = () => {
       copy={[P1, P2]}
       interaction={
         <>
-          <Box display="flex" justifyContent="center" my={12}>
-            <Button
-              variant="contained"
-              color="primary"
-              onClick={handleOpenDialog}>
+          <Box display="flex" justifyContent="center" my={{ md: 12, xs: 6 }}>
+            <Button variant="contained" color="info" onClick={handleOpenDialog}>
               Request an appointment
             </Button>
           </Box>

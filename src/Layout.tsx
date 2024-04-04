@@ -3,8 +3,8 @@ import { Outlet } from "react-router-dom";
 import { CssBaseline } from "@mui/material";
 
 import { SiteHeader } from "./components/SiteHeader/SiteHeader";
-import { ThemeProvider } from "./components/ThemeProvider/ThemeProvider";
-import { ColorModeContextProvider } from "./contexts/ColorMode/ColorModeContext";
+import { ColorModeContextProvider } from "./contexts/ColorMode";
+import { ThemeProvider } from "./contexts/ThemeProvider";
 
 export const Layout: FC = () => {
   return (
