@@ -3,7 +3,6 @@ import {
   FC,
   PropsWithChildren,
   useContext,
-  useMemo,
   useState,
 } from "react";
 
@@ -22,17 +21,14 @@ const ColorModeContext = createContext({
 export const ColorModeContextProvider: FC<PropsWithChildren> = ({
   children,
 }) => {
-  const [mode, setMode] = useState<ColorMode>("light");
+  const [mode, setMode] = useState<ColorMode>("dark");
 
-  const colorMode = useMemo(
-    () => ({
-      colorMode: mode,
-      toggleColorMode: () => {
-        setMode((prevMode) => (prevMode === "light" ? "dark" : "light"));
-      },
-    }),
-    [mode]
-  );
+  const colorMode = {
+    colorMode: mode,
+    toggleColorMode: () => {
+      setMode((prevMode) => (prevMode === "light" ? "dark" : "light"));
+    },
+  };
 
   return (
     <ColorModeContext.Provider value={colorMode}>

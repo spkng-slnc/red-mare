@@ -1,55 +1,114 @@
-import { FC } from "react";
+import { FC, useCallback, useState } from "react";
 import { Link as RouterLink } from "react-router-dom";
-import { gql, useQuery } from "@apollo/client";
-import { DarkMode, LightMode } from "@mui/icons-material";
+import { DarkMode, LightMode, Menu as MenuIcon } from "@mui/icons-material";
 import {
   AppBar,
   Box,
   Container,
+  Divider,
+  Drawer,
   IconButton,
   Link,
+  MenuItem,
   Toolbar,
+  Typography,
   useTheme,
 } from "@mui/material";
-import { useColorModeContext } from "src/contexts/ColorMode/ColorModeContext";
+import { useColorModeContext } from "src/contexts/ColorMode";
 
-import { RedMareLogo } from "./RedMareLogo";
+import { Stacked } from "./RedMareLogo";
+
+const publicFeatures = [
+  { pathname: "/appraisals", title: "Appraisals" },
+  { pathname: "/coaching", title: "Coaching" },
+  { pathname: "/training", title: "Training" },
+  { pathname: "/about-me", title: "About" },
+];
 
 export const SiteHeader: FC = () => {
-  const { data } = useQuery(USER_AUTH_QUERY);
   const { colorMode, toggleColorMode } = useColorModeContext();
-  const authId = data?.currentUser?.auth.id;
-  const adminId = import.meta.env.VITE_ADMIN_ID;
-  const { palette } = useTheme();
+  const [navDrawerOpen, setNavDrawerOpen] = useState<boolean>(false);
+  const theme = useTheme();
+
+  const handleNavDrawerClose = useCallback(() => setNavDrawerOpen(false), []);
+  const handleNavDrawerOpen = useCallback(() => setNavDrawerOpen(true), []);
 
   return (
-    <AppBar color="transparent" position="sticky">
-      <Container
-        disableGutters
-        maxWidth={false}
-        sx={{
-          display: "flex",
-          width: "100%",
-        }}>
-        <Toolbar
-          sx={{
-            display: "flex",
-            justifyContent: "space-between",
-            width: "100%",
-          }}>
-          <RedMareLogo />
-          <Box sx={{ display: "flex", flexGrow: 1 }}>
-            <StyledLink path="/appraisals" title="Appraisals" />
-            <StyledLink path="/coaching" title="Coaching" />
-            {adminId && adminId === authId && (
-              <StyledLink path="/sales-and-leasing" title="Sales & Leasing" />
-            )}
-            <StyledLink path="/training" title="Training" />
-            <StyledLink path="/about-me" title="About" />
+    <AppBar>
+      <Container disableGutters maxWidth="xl">
+        <Toolbar disableGutters>
+          <Link component={RouterLink} to="/">
+            <Stacked />
+          </Link>
+          <Box sx={{ display: { md: "flex", xs: "none" }, flexGrow: 1 }}>
+            {publicFeatures.map(({ pathname, title }) => {
+              return <StyledLink key={title} path={pathname} title={title} />;
+            })}
           </Box>
-          <IconButton onClick={toggleColorMode}>
-            {colorMode === "light" ? <DarkMode /> : <LightMode />}
-          </IconButton>
+          <Box sx={{ display: { md: "flex", xs: "none" } }}>
+            <IconButton
+              aria-label="color mode toggle"
+              onClick={toggleColorMode}
+              size="large">
+              {colorMode === "light" ? <DarkMode /> : <LightMode />}
+            </IconButton>
+          </Box>
+
+          {/** XS Layout */}
+          <Box
+            sx={{
+              display: { md: "none", xs: "flex" },
+              flexGrow: 1,
+              justifyContent: "end",
+            }}>
+            <Drawer
+              anchor="right"
+              open={navDrawerOpen}
+              id="drawer-appbar"
+              onClose={handleNavDrawerClose}>
+              <Link
+                to="/"
+                component={RouterLink}
+                onClick={handleNavDrawerClose}
+                sx={{ textDecoration: "none" }}>
+                <Typography
+                  p={2}
+                  variant="h4"
+                  sx={{
+                    fontWeight: 300,
+                  }}>
+                  Red Mare
+                </Typography>
+              </Link>
+              <Divider />
+              {publicFeatures.map(({ pathname, title }) => (
+                <MenuItem
+                  key={title}
+                  onClick={handleNavDrawerClose}
+                  sx={{ display: "flex", justifyContent: "center" }}>
+                  <StyledLink path={pathname} title={title} />
+                </MenuItem>
+              ))}
+              <MenuItem
+                key="color-mode-toggle"
+                onClick={handleNavDrawerClose}
+                sx={{ display: "flex", justifyContent: "center" }}>
+                <IconButton
+                  aria-label="color mode toggle"
+                  onClick={toggleColorMode}
+                  size="large">
+                  {colorMode === "light" ? <DarkMode /> : <LightMode />}
+                </IconButton>
+              </MenuItem>
+            </Drawer>
+            <IconButton
+              size="large"
+              aria-controls="drawer-appbar"
+              aria-haspopup="true"
+              onClick={handleNavDrawerOpen}>
+              <MenuIcon />
+            </IconButton>
+          </Box>
         </Toolbar>
       </Container>
     </AppBar>
@@ -65,7 +124,7 @@ const StyledLink: FC<{ path: string; title: string }> = ({ path, title }) => {
       component={RouterLink}
       to={path}
       sx={{
-        color: palette.primary.main,
+        color: palette.secondary.main,
         fontFamily: "Roboto",
         marginLeft: spacing(2),
         marginRight: spacing(2),
@@ -76,13 +135,3 @@ const StyledLink: FC<{ path: string; title: string }> = ({ path, title }) => {
     </Link>
   );
 };
-
-const USER_AUTH_QUERY = gql`
-  query UserAuthQuery {
-    currentUser {
-      auth {
-        id
-      }
-    }
-  }
-`;

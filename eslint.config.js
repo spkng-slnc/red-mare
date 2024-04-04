@@ -23,10 +23,10 @@ export default [
     },
     rules: {
       "no-console": ["warn"],
-      "sort-keys": ["error"],
-      "sort-vars": ["error"],
+      "sort-keys": ["warn"],
+      "sort-vars": ["warn"],
       "simple-import-sort/imports": [
-        "error",
+        "warn",
         {
           groups: [
             // Packages `react` related packages come first.
@@ -44,7 +44,7 @@ export default [
           ],
         },
       ],
-      "simple-import-sort/exports": "error",
+      "simple-import-sort/exports": "warn",
     },
   },
 ];

@@ -1,8 +1,15 @@
 import { FC } from "react";
 import { Container, Typography } from "@mui/material";
 
+interface TextWithListItems {
+  text: string;
+  items: string[];
+}
+
+type Copy = string | TextWithListItems;
+
 interface FeatureTemplateProps {
-  copy: string[];
+  copy: Copy[];
   interaction?: JSX.Element;
   title: string;
   subtitle?: string;
@@ -16,7 +23,12 @@ export const FeatureTemplate: FC<FeatureTemplateProps> = ({
 }) => {
   return (
     <Container>
-      <Typography variant="h1" my={12} textAlign="end">
+      <Typography
+        textAlign="end"
+        variant="h1"
+        letterSpacing={{ md: "0.05em", xs: "unset" }}
+        my={{ md: 16, xs: 8 }}
+        sx={{ fontSize: { md: "8em", xs: "4em" } }}>
         {title}
       </Typography>
       {Boolean(subtitle) && (
@@ -24,9 +36,27 @@ export const FeatureTemplate: FC<FeatureTemplateProps> = ({
           {subtitle}
         </Typography>
       )}
-      {copy.map((paragraph, i) => (
-        <Typography my={2}>{paragraph}</Typography>
-      ))}
+      {copy.map((paragraph, i) => {
+        if (typeof paragraph === "string") {
+          return (
+            <Typography key={`paragraph-${i}`} my={2}>
+              {paragraph}
+            </Typography>
+          );
+        }
+        return (
+          <>
+            <Typography key={`paragraph-${i}`} my={2}>
+              {paragraph.text}
+            </Typography>
+            <ul>
+              {paragraph.items.map((item) => {
+                return <li>{item}</li>;
+              })}
+            </ul>
+          </>
+        );
+      })}
       {Boolean(interaction) && <>{interaction}</>}
     </Container>
   );

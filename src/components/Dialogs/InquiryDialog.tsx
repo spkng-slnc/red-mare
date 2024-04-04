@@ -2,7 +2,6 @@ import { FC } from "react";
 import { Close } from "@mui/icons-material";
 import { Box, Dialog, IconButton, Typography, useTheme } from "@mui/material";
 
-import { useWindowSize } from "../../utils/useWindowSize";
 import { InquiryForm } from "../Forms/InquiryForm";
 
 interface InquiryDialogProps {
@@ -16,9 +15,6 @@ export const InquiryDialog: FC<InquiryDialogProps> = ({
   onClose,
   prompt,
 }) => {
-  const { palette } = useTheme();
-  const { height } = useWindowSize();
-
   return (
     <Dialog
       open={open}
@@ -26,23 +22,19 @@ export const InquiryDialog: FC<InquiryDialogProps> = ({
       maxWidth="md"
       scroll="body"
       onClose={onClose}
-      sx={{ height: `${height * 7}` }}
-    >
+      sx={{ height: "70vh" }}>
       <Box
         display="flex"
         justifyContent="space-between"
         alignItems="center"
-        mx={4}
-        mt={4}
-      >
+        mx={{ md: 4, xs: 2 }}
+        mt={{ md: 4, xs: 2 }}>
         <Typography
           variant="h5"
           textTransform="uppercase"
           fontWeight="400"
           letterSpacing={2}
-          color={palette.primary.main}
-          ml={1}
-        >
+          ml={1}>
           Inquire
         </Typography>
         <IconButton onClick={onClose} color="primary">

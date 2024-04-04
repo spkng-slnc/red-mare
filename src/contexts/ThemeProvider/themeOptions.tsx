@@ -8,26 +8,49 @@ import { ColorMode } from "src/contexts/ColorMode/ColorModeContext";
 
 export const themeOptions: (mode: ColorMode) => ThemeOptions = (mode) => ({
   components: {
+    MuiAppBar: {
+      defaultProps: {
+        color: "transparent",
+        position: "static",
+      },
+    },
     MuiButton: {
       styleOverrides: {
         textPrimary: ({ theme }) => theme.palette.info.main,
       },
     },
+    MuiDialog: {
+      styleOverrides: {
+        paper: {
+          backgroundColor: mode === "light" ? vanilla.light : moss.main,
+        },
+      },
+    },
+    MuiDrawer: {
+      styleOverrides: {
+        paper: {
+          backgroundColor: mode === "light" ? vanilla.light : moss.main,
+        },
+      },
+    },
     MuiInputLabel: {
       styleOverrides: {
         root: {
-          color: "#2E3B44",
+          color:
+            mode == "light"
+              ? (lightPalette.secondary as SimplePaletteColorOptions)!.main
+              : (darkPalette.secondary as SimplePaletteColorOptions)!.main,
         },
       },
     },
     MuiSvgIcon: {
       defaultProps: {
-        color: "primary",
+        color: "secondary",
       },
     },
     MuiTextField: {
       defaultProps: {
-        color: "secondary",
+        color: "primary",
         variant: "standard",
       },
     },
@@ -36,17 +59,41 @@ export const themeOptions: (mode: ColorMode) => ThemeOptions = (mode) => ({
   palette: mode == "light" ? lightPalette : darkPalette,
   shadows: Array(25).fill("none") as Shadows,
   typography: {
-    h1: {
+    allVariants: {
       color:
         mode == "light"
           ? (lightPalette.secondary as SimplePaletteColorOptions)!.main
-          : (darkPalette.secondary as SimplePaletteColorOptions)!.light,
+          : (darkPalette.secondary as SimplePaletteColorOptions)!.main,
+    },
+    h1: {
+      color:
+        mode == "light"
+          ? (lightPalette.primary as SimplePaletteColorOptions)!.main
+          : (darkPalette.primary as SimplePaletteColorOptions)!.light,
     },
     h2: {
       color:
         mode == "light"
+          ? (lightPalette.secondary as SimplePaletteColorOptions)!.main
+          : (darkPalette.secondary as SimplePaletteColorOptions)!.main,
+    },
+    h3: {
+      color:
+        mode == "light"
           ? (lightPalette.primary as SimplePaletteColorOptions)!.main
-          : (darkPalette.primary as SimplePaletteColorOptions)!.main,
+          : (darkPalette.primary as SimplePaletteColorOptions)!.light,
+    },
+    h4: {
+      color:
+        mode == "light"
+          ? (lightPalette.primary as SimplePaletteColorOptions)!.main
+          : (darkPalette.primary as SimplePaletteColorOptions)!.light,
+    },
+    h5: {
+      color:
+        mode == "light"
+          ? (lightPalette.primary as SimplePaletteColorOptions)!.main
+          : (darkPalette.primary as SimplePaletteColorOptions)!.light,
     },
   },
 });
@@ -95,12 +142,12 @@ const darkPalette: PaletteOptions = {
     ...slate,
   },
   primary: {
-    contrastText: slate.dark,
-    ...vanilla,
-  },
-  secondary: {
     contrastText: vanilla.light,
     ...rust,
+  },
+  secondary: {
+    contrastText: slate.dark,
+    ...vanilla,
   },
   success: {
     contrastText: vanilla.light,
@@ -111,6 +158,7 @@ const darkPalette: PaletteOptions = {
     ...pumpkin,
   },
 };
+
 const lightPalette: PaletteOptions = {
   background: {
     default: vanilla.light,
@@ -125,10 +173,11 @@ const lightPalette: PaletteOptions = {
   },
   primary: {
     contrastText: vanilla.light,
-    ...slate,
+    ...rust,
   },
   secondary: {
-    ...rust,
+    contrastText: vanilla.light,
+    ...slate,
   },
   success: {
     contrastText: vanilla.light,
