@@ -39,19 +39,19 @@ export const FeatureTemplate: FC<FeatureTemplateProps> = ({
       {copy.map((paragraph, i) => {
         if (typeof paragraph === "string") {
           return (
-            <Typography key={`paragraph-${i}`} my={2}>
+            <Typography key={`p${i}`} my={2}>
               {paragraph}
             </Typography>
           );
         }
         return (
           <>
-            <Typography key={`paragraph-${i}`} my={2}>
+            <Typography key={`p${i}`} my={2}>
               {paragraph.text}
             </Typography>
             <ul>
-              {paragraph.items.map((item) => {
-                return <li>{item}</li>;
+              {paragraph.items.map((item, j) => {
+                return <li key={`p${i}-i${j}`}>{item}</li>;
               })}
             </ul>
           </>
