@@ -15,8 +15,8 @@ export const themeOptions: (mode: ColorMode) => ThemeOptions = (mode) => ({
       },
     },
     MuiButton: {
-      styleOverrides: {
-        textPrimary: ({ theme }) => theme.palette.info.main,
+      defaultProps: {
+        color: "secondary",
       },
     },
     MuiDialog: {

@@ -19,7 +19,7 @@ import { useColorModeContext } from "src/contexts/ColorMode";
 import { Stacked } from "./RedMareLogo";
 
 const publicFeatures = [
-  { pathname: "/appraisals", title: "Appraisals" },
+  // { pathname: "/appraisals", title: "Appraisals" },
   { pathname: "/coaching", title: "Coaching" },
   { pathname: "/training", title: "Training" },
   { pathname: "/about-me", title: "About" },
@@ -28,7 +28,6 @@ const publicFeatures = [
 export const SiteHeader: FC = () => {
   const { colorMode, toggleColorMode } = useColorModeContext();
   const [navDrawerOpen, setNavDrawerOpen] = useState<boolean>(false);
-  const theme = useTheme();
 
   const handleNavDrawerClose = useCallback(() => setNavDrawerOpen(false), []);
   const handleNavDrawerOpen = useCallback(() => setNavDrawerOpen(true), []);

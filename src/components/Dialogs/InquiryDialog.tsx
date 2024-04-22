@@ -37,7 +37,7 @@ export const InquiryDialog: FC<InquiryDialogProps> = ({
           ml={1}>
           Inquire
         </Typography>
-        <IconButton onClick={onClose} color="primary">
+        <IconButton onClick={onClose}>
           <Close />
         </IconButton>
       </Box>

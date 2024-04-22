@@ -12,14 +12,14 @@ export const Home = () => {
         <Typography
           textAlign="end"
           variant="h1"
-          letterSpacing={{ md: "0.1em", xs: "unset" }}
-          sx={{ fontSize: { md: "9em", xs: "5em" } }}>
+          letterSpacing={{ md: "0.166em", xs: "unset" }}
+          sx={{ fontSize: { md: "10em", xs: "5em" } }}>
           RedMare
         </Typography>
         <Typography
           textAlign="end"
           variant="h2"
-          sx={{ fontSize: { md: "6em", xs: "2em" } }}>
+          sx={{ fontSize: { md: "6em", xs: "2em" }, fontWeight: 200 }}>
           Equine Consulting and Appraisals
         </Typography>
       </Box>
